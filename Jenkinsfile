@@ -32,7 +32,7 @@ pipeline
         }
         stage ('zip')
         {
-             zip zipFile: 'nopcommerce.zip', archive: false, dir: 'archive' 
+             zip zipFile: 'nopcommerceJuly23.zip', archive: false, dir: 'archive' 
         }
         stage ('rtupload')
         {
