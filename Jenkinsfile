@@ -15,37 +15,51 @@ pipeline
         {
             steps
             {
-                url 'https://github.com/abhi08tcs/nopCommerceJuly23.git'
+                url 'https://github.com/abhi08tcs/nopCommerceJuly23.git',
+                branch 'develop'
 
-                }
+            }
         }
         
-        }
+    
         stage ('restore')
         {
+            steps
+            {
            sh 'dotnet restore src/NopCommerce.sln'
+            }
 
         }
         stage ('build')
         {
-            sh 'dotnet build src/NopCommerce.sln'
+            steps
+            {
+            sh 'dotnet build -c Release src/NopCommerce.sln',
+            
+            }
+        }
+        stage ('publish')
+        {
+            steps
+            {
+                publish 'dotnet publish -c Release src/Presentation/Nop.Web/Nop.Web.csproj-output -o publish'
+            }
+        }
+        stage ('creating directories')
+        {
+            steps
+            {
+                mkdir 'publish/bin',
+                mkdir 'publish/logs'
+            }
         }
         stage ('zip')
         {
-             zip zipFile: 'nopcommerceJuly23.zip', archive: false, dir: 'archive' 
-        }
-        stage ('rtupload')
-        {
-            serverId : 'MY_JFROG'
-            spec 
-            {
-            "files": [
-                  {
-                     "pattern": "*.zip",
-          
-                  }
-                    ]
+            steps
+            { 
+             zip zipFile: 'nopcommerce.zip', archive: false, dir: 'archive' 
             }
         }
     }
 }
+
