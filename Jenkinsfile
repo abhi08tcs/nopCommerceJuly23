@@ -9,17 +9,17 @@ pipeline
     {
          timeout(time: 30, unit: 'MINUTES')
     }
-    stages
+     stages
     {
-        stage ('vcs')
+        stage('vcs') 
         {
-            steps
+            steps 
             {
-                 steps 
-                git branch: 'develop', 
-                    url: 'https://github.com/abhi08tcs/nopCommerceJuly23.git'    
-            
-            }
+
+                git url: 'https://github.com/abhi08tcs/nopCommerceJuly23.git',
+                    branch: 'develop'
+                   
+            }     
         }
         
     
@@ -46,7 +46,7 @@ pipeline
                 sh 'dotnet publish -c Release src/Presentation/Nop.Web/Nop.Web.csproj-output -o publish'
             }
         }
-        stage ('creating directories and publish ')
+        stage ('creating directories and publish')
         {
             steps
             {
