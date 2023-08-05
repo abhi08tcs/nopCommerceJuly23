@@ -34,7 +34,7 @@ pipeline
         {
             steps
             {
-            sh 'dotnet build -c Release src/NopCommerce.sln',
+            sh 'dotnet build -c Release src/NopCommerce.sln'
             
             }
         }
