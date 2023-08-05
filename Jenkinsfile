@@ -15,9 +15,10 @@ pipeline
         {
             steps
             {
-                git url 'https://github.com/abhi08tcs/nopCommerceJuly23.git',
-                    branch 'develop'
-
+                 steps 
+                git branch: 'develop', 
+                    url: 'https://github.com/abhi08tcs/nopCommerceJuly23.git'    
+            
             }
         }
         
