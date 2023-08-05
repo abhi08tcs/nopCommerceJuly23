@@ -42,22 +42,21 @@ pipeline
         {
             steps
             {
-                publish 'dotnet publish -c Release src/Presentation/Nop.Web/Nop.Web.csproj-output -o publish'
+                sh 'dotnet publish -c Release src/Presentation/Nop.Web/Nop.Web.csproj-output -o publish'
             }
         }
-        stage ('creating directories')
+        stage ('creating directories and publish ')
         {
             steps
             {
-                mkdir 'publish/bin',
-                mkdir 'publish/logs'
+                sh 'mkdir publish/bin publish/logs && zip -r nopCommerce.zip publish'
             }
         }
-        stage ('zip')
+        stage ('archive')
         {
             steps
             { 
-             zip zipFile: 'nopcommerce.zip', archive: false, dir: 'archive' 
+             sh '**/nopCommerce.zip'
             }
         }
     }
