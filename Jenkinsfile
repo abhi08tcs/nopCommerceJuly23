@@ -43,7 +43,9 @@ pipeline
         {
             steps
             {
-                sh 'dotnet publish -c Release src/Presentation/Nop.Web/Nop.Web.csproj-output -o publish'
+                //sh 'dotnet publish -c Release src/Presentation/Nop.Web/Nop.Web.csproj-output -o publish'
+                //src/Presentation/Nop.Web/Nop.Web.csproj-output
+                sh 'dotnet publish -c Release src/Presentation/Nop.Web/Nop.Web.csproj -o publish'
             }
         }
         stage ('creating directories and publish')
@@ -51,6 +53,7 @@ pipeline
             steps
             {
                 sh 'mkdir publish/bin publish/logs && zip -r nopCommerce.zip publish'
+                
             }
         }
         stage ('archive')
