@@ -53,7 +53,7 @@ pipeline
             steps
             {
                 //sh 'mkdir publish/bin publish/logs && zip -r nopCommerce.zip publish'
-                 sh 'mkdir publish/bin publish/logs && zip -r nopCommerce.zip publish'
+                 sh 'zip -r nopCommerce.zip publish'
                 
             }
         }
@@ -61,7 +61,7 @@ pipeline
         {
             steps
             { 
-             sh '**/nopCommerce.zip'
+             archive '**/nopCommerce.zip'
             }
         }
     }
