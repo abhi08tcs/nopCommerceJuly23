@@ -64,6 +64,16 @@ pipeline
              archive '**/nopCommerce.zip'
             }
         }
+        /*stage ('dockercontainer')
+        {
+            steps
+            {
+                sh 'docker image build -t nopCommerce:ced0996'
+                sh 'docker image tag nopCommmerce:ced0996 abhishek08tcs/nopcommerce:ced0996'
+                sh 'docker image push abhishek08tcs/nopCommerce:ced0996'
+            }
+        }*/
     }
+
 }
 
