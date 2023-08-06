@@ -52,7 +52,8 @@ pipeline
         {
             steps
             {
-                sh 'mkdir publish/bin publish/logs && zip -r nopCommerce.zip publish'
+                //sh 'mkdir publish/bin publish/logs && zip -r nopCommerce.zip publish'
+                 sh 'mkdir publish/bin publish/logs && zip -r nopCommerce.zip publish'
                 
             }
         }
